@@ -1,0 +1,31 @@
+import java.util.*;
+import java.util.Arrays;
+class FizzBuzz {
+    public static String[] fizzBuzz(int n) {
+        String[] answer = new String[n];
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                answer[i - 1] = "FizzBuzz";
+            } else if (i % 3 == 0) {
+                answer[i - 1] = "Fizz";
+            } else if (i % 5 == 0) {
+                answer[i - 1] = "Buzz";
+            } else {
+                answer[i - 1] = String.valueOf(i);
+            }
+        }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("enter a number:");
+        int n = sc.nextInt();
+        String[] result = fizzBuzz(n);
+        System.out.println(Arrays.toString(result));
+    }
+}
+output
+enter a number:15
+[1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz]
+
