@@ -1,0 +1,73 @@
+import java.util.Scanner;
+class BankBalance {
+    String name;
+    int accno;
+    String type;
+    int bal;
+    BankBalance(String n,int a,String t,int b)
+    {
+        name=n;
+        accno=a;
+        type=t;
+        bal=b;
+    }
+    void deposit(int d)
+    {
+        if(d<0)
+        {
+            System.out.print("Invalid !");
+        }
+        else
+        {
+            bal+=d;
+        }
+    }
+    void withdraw(int w)
+    {
+        if(w>0 && w<=bal)
+        {
+            bal=bal-w;
+        }
+        else
+        {
+            System.out.println("Insufficient balance");
+        }
+    }
+    void display()
+    {
+        System.out.println("Name:"+name);
+        System.out.println("Acc no:"+accno);
+        System.out.println("Type:"+type);
+        System.out.print("Balance:"+bal);
+    }
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner input=new Scanner(System.in);
+        String n,t;
+        int a;
+        int bal;
+        System.out.print("enter name:");
+        n=input.nextLine();
+        System.out.print("enter account no:");
+        a=input.nextInt();
+        System.out.print("enter type(s/c):");
+        t=input.next();
+        System.out.print("enter balance:");
+        bal=input.nextInt();
+        BankBalance bank=new BankBalance(n,a,t,bal);
+        bank.deposit(100);
+        bank.withdraw(20);
+        bank.display();
+    }
+}
+
+output
+enter name:pooji
+enter account no:1234
+enter type(s/c):s
+enter balance:6000
+Name:pooji
+Acc no:1234
+Type:s
+Balance:6080
+
