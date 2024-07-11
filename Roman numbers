@@ -1,0 +1,75 @@
+import java.util.Scanner;
+class Roman{
+    public static int value(char ch)
+    {
+        if(ch=='I')
+        {
+            return 1;
+        }
+        if(ch=='V')
+        {
+            return 5;
+        }
+        if(ch=='X')
+        {
+            return 10;
+        }
+        if(ch=='L')
+        {
+            return 50;
+        }
+        if(ch=='C')
+        {
+            return 100;
+        }
+        if(ch=='D')
+        {
+            return 500;
+        }
+        if(ch=='M')
+        {
+            return 1000;
+        }
+        return -1;
+    }
+    public static int RomToInt(String s)
+    {
+        int res=0;
+        for(int i=0;i<s.length();i++)
+        {
+            int s1=value(s.charAt(i));
+            if(i+1<s.length())
+            {
+                int s2=value(s.charAt(i+1));
+                if(s1>=s2)
+                {
+                    res=res+s1;
+                }
+                else
+                {
+                    res=res+s2-s1;
+                }
+            }
+            else
+            {
+                res=res+s1;
+            }
+        }
+        return res;
+    }
+    public static void main(String[] args)
+    {
+        Scanner input=new Scanner(System.in);
+	System.out.println("enter in roman number:");
+        String s=input.nextLine();
+        int res=RomToInt(s);
+        System.out.print("Value:"+res);
+    }
+}
+
+output
+enter in roman number:
+III
+Value:3
+
+
