@@ -54,3 +54,15 @@ public class DaysConverter {
         }
     }
 }
+output
+Enter the number of days: 400
+No. of years: 1
+No. of weeks: 5
+No. of days: 0
+Enter day: 2
+Enter month: 5
+Enter year: 2004
+The day of the week is: Sunday
+
+
+
