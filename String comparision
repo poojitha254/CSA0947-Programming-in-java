@@ -1,0 +1,52 @@
+import java.util.Scanner;
+class Comparision{
+    public static void main(String[] args)
+    {
+        Scanner input=new Scanner(System.in);
+        System.out.print("enter ransome:");
+        String r=input.nextLine();
+        System.out.print("enter magazine:");
+        String m=input.nextLine();
+        int[] t1=new int[r.length()];
+        int[] t2=new int[m.length()];
+        for(int i=0;i<r.length();i++)
+        {
+            t1[i]=r.charAt(i);
+        }
+        for(int i=0;i<m.length();i++)
+        {
+            t2[i]=m.charAt(i);
+        }
+        int len=r.length();
+        int c=0;
+        for(int i=0;i<r.length();i++)
+        {
+            for(int j=0;j<m.length();j++)
+            {
+                if(t1[i]==t2[j])
+                {
+                    c++;
+                    break;
+                }
+            }
+        }
+        System.out.println(c);
+        if(len==c)
+        {
+            System.out.println("True");
+        }
+        else
+        {
+            System.out.println("False");
+        }
+    }
+}
+
+output
+enter ransome:abba
+enter magazine:bbaa
+4
+True
+
+
+
