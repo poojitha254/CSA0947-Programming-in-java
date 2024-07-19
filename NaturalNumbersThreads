@@ -1,0 +1,55 @@
+class NaturalNumbersThreads {
+    public static void main(String[] args) {
+        Runnable printNumbers = new Runnable() {
+            public void run() {
+                for (int i = 1; i <= 10; i++) {
+                    try {
+                        Thread.sleep(1000); // Sleep for 1 second
+                        System.out.println(Thread.currentThread().getName() + ": " + i);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        Thread thread1 = new Thread(printNumbers, "Thread-1");
+        Thread thread2 = new Thread(printNumbers, "Thread-2");
+        Thread thread3 = new Thread(printNumbers, "Thread-3");
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
+output:
+Thread-3: 1
+Thread-2: 1
+Thread-1: 1
+Thread-3: 2
+Thread-2: 2
+Thread-1: 2
+Thread-1: 3
+Thread-2: 3
+Thread-3: 3
+Thread-3: 4
+Thread-2: 4
+Thread-1: 4
+Thread-3: 5
+Thread-2: 5
+Thread-1: 5
+Thread-1: 6
+Thread-2: 6
+Thread-3: 6
+Thread-3: 7
+Thread-2: 7
+Thread-1: 7
+Thread-1: 8
+Thread-2: 8
+Thread-3: 8
+Thread-1: 9
+Thread-2: 9
+Thread-3: 9
+Thread-2: 10
+Thread-3: 10
+Thread-1: 10
