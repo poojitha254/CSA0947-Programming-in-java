@@ -1,0 +1,46 @@
+import java.util.Scanner;
+class StringOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the string from the user
+        System.out.print("Enter the string: ");
+        String inputString = scanner.nextLine();
+
+        // Check if the input matches the required string
+        if (!inputString.equals("Welcome to Saveetha university")) {
+            System.out.println("The input string does not match the expected string.");
+            return;
+        }
+
+        // i) Replace any word in the given String
+        System.out.print("Enter the word to replace: ");
+        String oldWord = scanner.next();
+        System.out.print("Enter the new word: ");
+        String newWord = scanner.next();
+        
+        String replacedString = inputString.replace(oldWord, newWord);
+
+        // ii) Find the length
+        int length = inputString.length();
+
+        // iii) Uppercase Conversion
+        String upperCaseString = inputString.toUpperCase();
+
+        // Output the results
+        System.out.println("Original String: " + inputString);
+        System.out.println("String after replacement: " + replacedString);
+        System.out.println("Length of the string: " + length);
+        System.out.println("Uppercase Conversion: " + upperCaseString);
+
+        scanner.close();
+    }
+}
+output:
+Enter the string: Welcome to Saveetha university
+Enter the word to replace: Saveetha
+Enter the new word: SIMATS
+Original String: Welcome to Saveetha university
+String after replacement: Welcome to SIMATS university
+Length of the string: 30
+Uppercase Conversion: WELCOME TO SAVEETHA UNIVERSITY
