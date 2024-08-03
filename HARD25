@@ -1,0 +1,45 @@
+public class Solution {
+    public static int[] threeEqualParts(int[] arr) {
+        int numOnes = 0;
+        for (int num : arr) {
+            if (num == 1) numOnes++;
+        }
+
+        // If the number of 1s is not divisible by 3, we can't divide the array
+        if (numOnes % 3 != 0) return new int[]{-1, -1};
+
+        // If there are no 1s, the array is trivially divisible
+        if (numOnes == 0) return new int[]{0, arr.length - 1};
+
+        // Calculate the number of 1s in each part
+        int onesPerPart = numOnes / 3;
+        int first = -1, second = -1, third = -1, currentOnes = 0;
+
+        // Find the starting index of each part
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                currentOnes++;
+                if (currentOnes == 1) first = i;
+                else if (currentOnes == onesPerPart + 1) second = i;
+                else if (currentOnes == 2 * onesPerPart + 1) third = i;
+            }
+        }
+
+        // Compare the parts starting from the first 1 in each part
+        while (third < arr.length) {
+            if (arr[first] != arr[second] || arr[first] != arr[third]) return new int[]{-1, -1};
+            first++;
+            second++;
+            third++;
+        }
+
+        // Return the indices of the cuts
+        return new int[]{first - 1, second};
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1,0,1,0,1};
+        int[] result = threeEqualParts(arr);
+        System.out.println("Result: [" + result[0] + ", " + result[1] + "]");
+    }
+}
