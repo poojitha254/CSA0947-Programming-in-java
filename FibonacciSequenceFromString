@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class FibonacciSequenceFromString {
+    public static List<Integer> splitIntoFibonacci(String num) {
+        List<Integer> sequence = new ArrayList<>();
+        backtrack(num, sequence, 0);
+        return sequence;
+    }
+
+    private static boolean backtrack(String num, List<Integer> sequence, int index) {
+        if (index == num.length() && sequence.size() >= 3) {
+            return true; // Found a valid sequence
+        }
+
+        for (int i = index; i < num.length(); i++) {
+            if (num.charAt(index) == '0' && i > index) {
+                break; // No leading zeros
+            }
+
+            long nextNum = Long.parseLong(num.substring(index, i + 1));
+            if (nextNum > Integer.MAX_VALUE) {
+                break; // Out of 32-bit integer range
+            }
+
+            int size = sequence.size();
+            if (size >= 2 && nextNum > sequence.get(size - 1) + sequence.get(size - 2)) {
+                break; // No valid continuation
+            }
+
+            if (size <= 1 || nextNum == sequence.get(size - 1) + sequence.get(size - 2)) {
+                sequence.add((int) nextNum);
+                if (backtrack(num, sequence, i + 1)) {
+                    return true; // Found a valid sequence
+                }
+                sequence.remove(sequence.size() - 1); // Backtrack
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String num = "1101111";
+        List<Integer> result = splitIntoFibonacci(num);
+        System.out.println(result); // Output: [11, 0, 11, 11] or [110, 1, 111]
+    }
+}
