@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class BaseNeg2Addition {
+    public static int[] addNegabinary(int[] arr1, int[] arr2) {
+        List<Integer> result = new ArrayList<>();
+        int i = arr1.length - 1;
+        int j = arr2.length - 1;
+        int carry = 0;
+
+        while (i >= 0 || j >= 0 || carry != 0) {
+            int sum = carry;
+
+            if (i >= 0) sum += arr1[i--];
+            if (j >= 0) sum += arr2[j--];
+
+            result.add(sum & 1); // Add the least significant bit of sum to result
+            carry = -(sum >> 1); // Determine the carry (base -2 logic)
+        }
+
+        // Remove leading zeros
+        while (result.size() > 1 && result.get(result.size() - 1) == 0) {
+            result.remove(result.size() - 1);
+        }
+
+        // Convert result list to array and reverse it
+        Collections.reverse(result);
+        return result.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 1, 1, 1, 1};
+        int[] arr2 = {1, 0, 1};
+        int[] result = addNegabinary(arr1, arr2);
+        System.out.print("Output: [");
+        for (int i = 0; i < result.length; i++) {
+            if (i > 0) System.out.print(", ");
+            System.out.print(result[i]);
+        }
+        System.out.println("]");
+    }
+}
