@@ -1,0 +1,51 @@
+public class ThreadExample {
+    public static void main(String[] args) {
+        // Create thread objects
+        MyThread thread1 = new MyThread("Thread-1");
+        MyThread thread2 = new MyThread("Thread-2");
+        MyThread thread3 = new MyThread("Thread-3");
+
+        try {
+            // Start threads after a delay
+            System.out.println("Starting threads after 500ms delay...");
+
+            // Delay before starting the threads
+            Thread.sleep(500);
+
+            // Start threads
+            thread1.start();
+            thread2.start();
+            thread3.start();
+
+            // Wait for threads to finish
+            thread1.join();
+            thread2.join();
+            thread3.join();
+
+            System.out.println("All threads have finished executing.");
+
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted.");
+        }
+    }
+}
+
+class MyThread extends Thread {
+    private String threadName;
+
+    MyThread(String name) {
+        threadName = name;
+    }
+
+    @Override
+    public void run() {
+        try {
+            // Simulate some work with sleep
+            System.out.println(threadName + " is running.");
+            Thread.sleep(2000); // Simulate work by sleeping for 2 seconds
+            System.out.println(threadName + " has finished.");
+        } catch (InterruptedException e) {
+            System.out.println(threadName + " was interrupted.");
+        }
+    }
+}
