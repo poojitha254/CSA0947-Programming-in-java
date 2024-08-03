@@ -1,0 +1,27 @@
+class WordFilter {
+    private String[] words;
+
+    public WordFilter(String[] words) {
+        this.words = words;
+    }
+
+    public int f(String pref, String suff) {
+        int maxIndex = -1;
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (word.startsWith(pref) && word.endsWith(suff)) {
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+    public static void main(String[] args) {
+        String[] words = {"apple", "apply", "orange", "ape"};
+        WordFilter wordFilter = new WordFilter(words);
+        System.out.println(wordFilter.f("ap", "e")); // Output: 3
+        System.out.println(wordFilter.f("app", "ly")); // Output: 1
+        System.out.println(wordFilter.f("or", "ge")); // Output: 2
+        System.out.println(wordFilter.f("a", "z")); // Output: -1
+    }
+}
