@@ -1,0 +1,28 @@
+public class Overload {
+    private int value1;
+    private int value2;
+
+    // Method with one argument
+    public void assignValues(int value) {
+        this.value1 = value;
+        this.value2 = 0; // Default value
+        System.out.println("Assigned value1: " + this.value1 + ", value2: " + this.value2);
+    }
+
+    // Method with two arguments
+    public void assignValues(int value1, int value2) {
+        this.value1 = value1;
+        this.value2 = value2;
+        System.out.println("Assigned value1: " + this.value1 + ", value2: " + this.value2);
+    }
+
+    public static void main(String[] args) {
+        Overload obj = new Overload();
+        
+        // Assign values using method with one argument
+        obj.assignValues(10);
+        
+        // Assign values using method with two arguments
+        obj.assignValues(20, 30);
+    }
+}
