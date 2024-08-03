@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class DirectoryEntry {
+    private String name;
+    private String address;
+    private String telephoneNumber;
+    private String mobileNumber;
+    private String headOfFamily;
+    private String uniqueId;
+
+    // Constructor
+    public DirectoryEntry(String name, String address, String telephoneNumber, String mobileNumber, String headOfFamily, String uniqueId) {
+        this.name = name;
+        this.address = address;
+        this.telephoneNumber = telephoneNumber;
+        this.mobileNumber = mobileNumber;
+        this.headOfFamily = headOfFamily;
+        this.uniqueId = uniqueId;
+    }
+
+    // Display the entry
+    public void displayEntry() {
+        System.out.println("Name: " + name);
+        System.out.println("Address: " + address);
+        System.out.println("Telephone Number: " + (telephoneNumber.isEmpty() ? "N/A" : telephoneNumber));
+        System.out.println("Mobile Number: " + (mobileNumber.isEmpty() ? "N/A" : mobileNumber));
+        System.out.println("Head of Family: " + headOfFamily);
+        System.out.println("Unique ID No: " + uniqueId);
+        System.out.println();
+    }
+}
+
+public class Directory {
+    private ArrayList<DirectoryEntry> entries;
+
+    public Directory() {
+        entries = new ArrayList<>();
+    }
+
+    // Method to add an entry
+    public void addEntry(DirectoryEntry entry) {
+        entries.add(entry);
+    }
+
+    // Method to display all entries
+    public void displayDirectory() {
+        for (DirectoryEntry entry : entries) {
+            entry.displayEntry();
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Directory directory = new Directory();
+
+        // Example: Adding entries
+        directory.addEntry(new DirectoryEntry(
+            "John Doe",
+            "123 Elm Street, Springfield",
+            "021-12345678",
+            "9876543210",
+            "John Doe",
+            "UID1234567890"
+        ));
+
+        directory.addEntry(new DirectoryEntry(
+            "Jane Smith",
+            "456 Oak Avenue, Springfield",
+            "",
+            "9123456780",
+            "John Smith",
+            "UID0987654321"
+        ));
+
+        // Display the directory
+        System.out.println("Directory Entries:");
+        directory.displayDirectory();
+
+        scanner.close();
+    }
+}
