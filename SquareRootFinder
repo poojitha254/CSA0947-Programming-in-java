@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class SquareRootFinder {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user for a perfect square number
+        System.out.print("Enter a perfect square number: ");
+        int number = scanner.nextInt();
+        
+        // Check if the number is a perfect square
+        int sqrt = (int) Math.sqrt(number);
+        if (sqrt * sqrt != number) {
+            System.out.println("The number is not a perfect square.");
+        } else {
+            // Calculate both the positive and negative square roots
+            double positiveRoot = Math.sqrt(number);
+            double negativeRoot = -positiveRoot;
+            
+            // Print the results
+            System.out.printf("The positive square root of %d is %.2f%n", number, positiveRoot);
+            System.out.printf("The negative square root of %d is %.2f%n", number, negativeRoot);
+        }
+        
+        // Close the scanner
+        scanner.close();
+    }
+}
