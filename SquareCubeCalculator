@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class SquareCubeCalculator {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user for a decimal number
+        System.out.print("Enter a decimal number: ");
+        double number = scanner.nextDouble();
+        
+        // Calculate the square and cube
+        double square = Math.pow(number, 2);
+        double cube = Math.pow(number, 3);
+        
+        // Print the results
+        System.out.printf("Square of %.2f is %.2f%n", number, square);
+        System.out.printf("Cube of %.2f is %.2f%n", number, cube);
+        
+        // Close the scanner
+        scanner.close();
+    }
+}
